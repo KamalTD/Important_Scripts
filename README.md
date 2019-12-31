@@ -8,3 +8,5 @@ Scripts for daily use
 
 
 3 - clarisse_scripts.py         - useful Scripts collection for Isotropix Clariss
+
+4- fix_backslash_in_MaxScript.ms -Is to fix backslash in maxscript 

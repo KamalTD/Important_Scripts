@@ -12,3 +12,5 @@ Scripts for daily use
 4- fix_backslash_in_MaxScript.ms -Is to fix backslash in maxscript 
 
 5 - Houdini_Shelf_Creator.py    - Create Houdini Shelf and Shelf Tools
+
+6 -clarisse_select_all_texture_nodes.py	-select all texture nodes in clarisse current scene

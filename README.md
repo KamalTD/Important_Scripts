@@ -14,3 +14,5 @@ Scripts for daily use
 5 - Houdini_Shelf_Creator.py    - Create Houdini Shelf and Shelf Tools
 
 6 -clarisse_select_all_texture_nodes.py	-select all texture nodes in clarisse current scene
+
+7- get_file_padding.py                -get frame number(padding) from file

@@ -16,3 +16,5 @@ Scripts for daily use
 6 -clarisse_select_all_texture_nodes.py	-select all texture nodes in clarisse current scene
 
 7- get_file_padding.py                -get frame number(padding) from file
+
+8- run_once.py                    -This script prevent dosen't allow openinig more than one same script at the same time 

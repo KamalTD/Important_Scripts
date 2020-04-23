@@ -115,7 +115,7 @@ for i in range(objectList.get_count()):
         
 
 ################################################################################################### 
-#get scene variables, Ex:'_renderPath' 
+#get scene variables, Ex:'_renderPath'  
 ix.application.get_factory().get_vars().get("_renderPath").get_string()
 
   

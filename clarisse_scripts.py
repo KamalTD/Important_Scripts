@@ -113,8 +113,10 @@ for i in range(objectList.get_count()):
 
         print obj_name , ":" , obj_attr
         
-      
 
+################################################################################################### 
+#get scene variables, Ex:'_renderPath' 
+ix.application.get_factory().get_vars().get("_renderPath").get_string()
 
   
   

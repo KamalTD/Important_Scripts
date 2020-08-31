@@ -18,3 +18,5 @@ Scripts for daily use
 7- get_file_padding.py                -get frame number(padding) from file
 
 8- run_once.py                    -This script prevent dosen't allow openinig more than one same script at the same time 
+
+9- get_node_inputs_outputs.py     - in clarisse get all inputs and outputs with attributes for a node 

@@ -1,0 +1,90 @@
+"""
+Get all textures connected to a material and the connection attributes in clarisse in two steps
+
+1- get_nodes_fromInputs(node_path)
+this function takes one argument is the path of this node 'material node path ' in the scene to return all connected nodes and the connection attributes for this node
+it will gives us just one level of connected nodes , but in complicated shaders we need more code to loop through all connected nodes one by one and find the texture node
+, that exactly the purpose of the second fucntion
+
+2-get_textures_fromMaterial(material_path)
+loop through all material attributes that connected to nods and get the texture nodes and the material inputs
+
+"""
+
+def get_nodes_fromInputs(node_path):
+    """
+      get all nodes that connected to node's inputs
+      
+    """
+    item = ix.get_item(node_path)
+
+    obj_array = ix.api.OfItemArray(1)
+    obj_array[0] = item
+    item_inputs = ix.api.OfItemVector()
+
+    node_inputs = {}
+
+
+    for i in range(item.get_attribute_count()):
+
+        attr= item.get_attribute(i)
+
+        if attr.get_texture():
+
+            node_inputs[attr.get_name()] = attr.get_texture()
+    return node_inputs
+
+#################################################################################
+
+def get_textures_fromMaterial(material_path):
+    """
+      loop through all material attributes connected to nods and get the texture nodes and the material inputs those connected to these textures 
+      
+    """
+    data = {}
+    inputs = get_nodes_fromInputs(material_path)
+    founded_nodes = []
+    texture_founded = []
+
+    for input in inputs.keys():
+
+
+        texture_item = ix.get_item(str(inputs[input]))
+        if texture_item.is_kindof("TextureStreamedMapFile") or texture_item.is_kindof("TextureMap") or texture_item.is_kindof("TextureMapFile"):
+            texture_founded.append(texture_item.get_full_name() + "@" + input)
+            continue
+        else:
+            founded_nodes.append(texture_item.get_full_name() + "@" + input)
+
+
+    while len(founded_nodes) >0:
+
+
+
+        for counter in range(len(founded_nodes)):
+            try:
+                current_item = founded_nodes[counter]     
+                texture_inputs = get_nodes_fromInputs(founded_nodes[counter].split("@")[0])
+                for texture_input in texture_inputs.keys():
+                    try:
+                        texture_input_item = ix.get_item(str(texture_inputs[texture_input]))
+                        if texture_input_item.is_kindof("TextureStreamedMapFile") or texture_input_item.is_kindof("TextureMap") or texture_input_item.is_kindof("TextureMapFile"):
+        
+                            texture_founded.append(texture_input_item.get_full_name() + "@" + founded_nodes[counter].split("@")[1] )
+                            continue
+                        else:
+                            founded_nodes.append(texture_input_item.get_full_name() +  "@" + founded_nodes[counter].split("@")[1] )
+                    except:
+                        pass
+                founded_nodes.remove(current_item)
+            except:
+                pass
+    for item in texture_founded:
+        texture_node , input = item.split("@")
+         
+        data[input] = texture_node
+    
+    return data
+
+#Ex::
+print get_textures_fromMaterial("project://materials/Body_Material")

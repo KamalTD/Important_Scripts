@@ -20,3 +20,5 @@ Scripts for daily use
 8- run_once.py                    -This script prevent dosen't allow openinig more than one same script at the same time 
 
 9- get_node_inputs_outputs.py     - in clarisse get all inputs and outputs with attributes for a node 
+
+10 - clarisse_get_texture_from_material - Get all textures connected to a material and the connection attributes in clarisse

@@ -22,3 +22,5 @@ Scripts for daily use
 9- get_node_inputs_outputs.py     - in clarisse get all inputs and outputs with attributes for a node 
 
 10 - clarisse_get_texture_from_material - Get all textures connected to a material and the connection attributes in clarisse
+
+11 -                                    - create maya PySide2 dockable widget 
